@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'Nguyễn Mỹ Anh','nguyenmyanh_t66@hus.edu.vn','Manh','manh','Quản lý');
+INSERT INTO `account` VALUES (1,'Nguyễn Mỹ Anh','nguyenmyanh@gmail.com','Manh','manh','Quản lý');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
