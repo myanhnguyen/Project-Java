@@ -27,8 +27,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label fx:id="passlabel" layoutX="174.0" layoutY="290.0" prefHeight="18.0" prefWidth="117.0" textFill="#e70b0b" />
-      <Button fx:id="signup" layoutX="219.0" layoutY="454.0" mnemonicParsing="false" onAction="#singupOnAction" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: yellow;" text="Đăng ký" />
+      <Label fx:id="passlabel" layoutX="174.0" layoutY="290.0" prefHeight="18.0" prefWidth="117.0" text="nhập" textFill="#e70b0b" />
+      <Button fx:id="signup" layoutX="214.0" layoutY="464.0" mnemonicParsing="false" onAction="#singupOnAction" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: yellow;" text="Đăng ký" />
       <Label layoutX="93.0" layoutY="120.0" text="Họ và tên" />
       <Label layoutX="93.0" layoutY="180.0" text="Email" />
       <Label layoutX="96.0" layoutY="237.0" text="Username" />
@@ -39,18 +39,20 @@
       <PasswordField fx:id="pass" layoutX="96.0" layoutY="312.0" prefHeight="26.0" prefWidth="296.0" promptText="Password" style="-fx-background-color: white;" />
       <Button fx:id="login" layoutX="219.0" layoutY="549.0" mnemonicParsing="false" onAction="#loginOnAction" style="-fx-background-color: gray;" text="Đăng nhập" />
       <Label layoutX="208.0" layoutY="529.0" text="Bạn đã đăng ký ?" />
-      <Label fx:id="emaillabel" layoutX="157.0" layoutY="181.0" prefHeight="18.0" prefWidth="163.0" style="-fx-text-fill: red;" textFill="#fc0000" />
-      <Label fx:id="usernamelabel" layoutX="176.0" layoutY="238.0" prefHeight="18.0" prefWidth="106.0" style="-fx-text-fill: red;" />
+      <Label fx:id="emaillabel" layoutX="157.0" layoutY="181.0" prefHeight="18.0" prefWidth="163.0" style="-fx-text-fill: red;" text="nhập" textFill="#fc0000" />
+      <Label fx:id="usernamelabel" layoutX="176.0" layoutY="238.0" prefHeight="18.0" prefWidth="106.0" style="-fx-text-fill: red;" text="nhập" />
       <Label layoutX="96.0" layoutY="353.0" text="nhập lại mật khẩu" />
       <PasswordField fx:id="cfpass" layoutX="95.0" layoutY="371.0" prefHeight="26.0" prefWidth="296.0" promptText="Confirm Password" style="-fx-background-color: white;" />
-      <Label fx:id="cfpasslabel" layoutX="212.0" layoutY="353.0" prefHeight="18.0" prefWidth="147.0" style="-fx-text-fill: red;" />
+      <Label fx:id="cfpasslabel" layoutX="212.0" layoutY="353.0" prefHeight="18.0" prefWidth="147.0" style="-fx-text-fill: red;" text="nhập" />
     
-      <RadioButton layoutX="236.0" layoutY="404.0" mnemonicParsing="false" text="Quản lý">
+      <RadioButton layoutX="236.0" layoutY="404.0" mnemonicParsing="false" selected="true" text="Quản lý">
          <toggleGroup>
-            <ToggleGroup fx:id="chucvu" />
+            <ToggleGroup fx:id="chức_vụ" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="142.0" layoutY="404.0" mnemonicParsing="false" selected="true" text="Nhân viên" toggleGroup="$chucvu" />
-      <Label fx:id="namelabel" layoutX="166.0" layoutY="120.0" prefHeight="18.0" prefWidth="124.0" textFill="#ec0707" />
+      <RadioButton layoutX="142.0" layoutY="404.0" mnemonicParsing="false" selected="true" text="Nhân viên" toggleGroup="$chức_vụ" />
+      <Label fx:id="namelabel" layoutX="166.0" layoutY="120.0" prefHeight="18.0" prefWidth="124.0" text="nhập" textFill="#ec0707" />
+      <Label fx:id="chooselabel" layoutX="345.0" layoutY="404.0" prefHeight="18.0" prefWidth="76.0" text="chọn" textFill="RED" />
+      <Label fx:id="donelabel" layoutX="142.0" layoutY="439.0" prefHeight="18.0" prefWidth="226.0" textFill="#0097ff" />
    </children>
 </AnchorPane>
