@@ -82,60 +82,6 @@ public class SignupController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         
-        if (!name.getText().equals("")) {
-            namelabel.setText("");
-            if (!email.getText().equals("")) {
-                emaillabel.setText("");
-                if (!email.getText().equals(trùng_email)) {  
-                    if (!username.getText().equals("")) {
-                        usernamelabel.setText("");
-                        if (!username.getText().equals(trùng_username)) { 
-                            if (!pass.getText().equals("")) {
-                                passlabel.setText("");
-                                if (pass.getText().length() >= 8) {
-                                    if (!cfpass.getText().equals("")) {
-                                        cfpasslabel.setText("");
-                                        if (cfpass.getText().equals(pass.getText())) {
-                                            if (!choose.equals("")) {
-                                                chooselabel.setText("");
-                                                try {
-                                                    thêm_vào_database.executeUpdate();
-                                                    ChangeScene.Change(event,"Login.fxml");
-                                                    donelabel.setText("Đăng ký thành công!");
-                                                } catch (SQLException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            } else {
-                                                chooselabel.setText("chọn");
-                                            }
-                                        } else {
-                                            cfpasslabel.setText("mật khẩu không khớp");
-                                        }
-                                    } else {
-                                        cfpasslabel.setText("nhập");
-                                    }
-                                } else {
-                                    passlabel.setText("mật khẩu quá ngắn");    
-                                }
-                            } else {
-                                passlabel.setText("nhập");
-                            }
-                        } else {
-                            usernamelabel.setText("username bị trùng");      
-                        }
-                    } else {
-                        usernamelabel.setText("nhập");
-                    }
-                } else {
-                    emaillabel.setText("email bị trùng");
-                }   
-            } else {
-                emaillabel.setText("nhập");
-            }
-        } else {
-            namelabel.setText("nhập");
-        }
         
         //check 
         if (!name.getText().equals("")) {
@@ -184,7 +130,25 @@ public class SignupController {
             chooselabel.setText("");
         } else {
             chooselabel.setText("chọn");
-        }          
+        } 
+        
+        if (!name.getText().equals("")) {
+            if (!email.getText().equals("")) {
+                if (!email.getText().equals(trùng_email)) {  
+                    if (!username.getText().equals("")) {
+                        if (!username.getText().equals(trùng_username)) { 
+                            if (!pass.getText().equals("")) {
+                                if (pass.getText().length() >= 8) {
+                                    if (!cfpass.getText().equals("")) {
+                                        if (cfpass.getText().equals(pass.getText())) {
+                                            if (!choose.equals("")) {
+                                                try {
+                                                    thêm_vào_database.executeUpdate();
+                                                    ChangeScene.Change(event,"Login.fxml");
+                                                    donelabel.setText("Đăng ký thành công!");
+                                                } catch (SQLException e) {
+                                                    e.printStackTrace();
+                                                } } } } } } } } } } }                             
     }
     
     @FXML
