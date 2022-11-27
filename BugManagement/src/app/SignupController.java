@@ -144,7 +144,7 @@ public class SignupController {
                                             if (!choose.equals("")) {
                                                 try {
                                                     thêm_vào_database.executeUpdate();
-                                                    ChangeScene.Change(event,"Login.fxml");
+                                                    
                                                     donelabel.setText("Đăng ký thành công!");
                                                 } catch (SQLException e) {
                                                     e.printStackTrace();
