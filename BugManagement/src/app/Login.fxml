@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400" prefWidth="600.0" style="-fx-background-color: #171e30;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
+   <children>
+      <ImageView fitHeight="372.0" fitWidth="600.0" layoutX="-4.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="17.0" layoutX="298.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: white;">
+         <image>
+            <Image url="@1.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="317.0" layoutY="136.0" text="Username" textFill="WHITE" />
+      <Label layoutX="319.0" layoutY="185.0" text="Password" textFill="WHITE" />
+      <TextField fx:id="username_text" layoutX="384.0" layoutY="132.0" style="-fx-background-radius: 30 30 30 30;" />
+      <Button id="button" fx:id="login" layoutX="421.0" layoutY="242.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="26.0" prefWidth="76.0" style="-fx-background-radius: 30 30 30 30;" stylesheets="@fxml.css" text="Đăng nhập" />
+      <Label layoutX="398.0" layoutY="312.0" text="Bạn chưa có tài khoản?" textFill="WHITE" />
+      <Button id="button" fx:id="signup" layoutX="423.0" layoutY="346.0" mnemonicParsing="false" onAction="#signupOnAction" prefHeight="26.0" prefWidth="76.0" style="-fx-background-radius: 30 30 30 30;" stylesheets="@fxml.css" text="Đăng ký" />
+      <Label fx:id="login_label" alignment="CENTER" layoutX="307.0" layoutY="209.0" prefHeight="18.0" prefWidth="264.0" style="-fx-text-fill: red;" textAlignment="CENTER" />
+      <PasswordField fx:id="password_text" layoutX="384.0" layoutY="181.0" style="-fx-background-radius: 30 30 30 30;" />
+      <ImageView fitHeight="14.0" fitWidth="17.0" layoutX="300.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@4.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
