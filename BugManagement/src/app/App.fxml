@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
@@ -29,8 +30,8 @@
             <Label fx:id="old_pass_label" layoutX="480.0" layoutY="97.0" prefHeight="18.0" prefWidth="92.0" />
             <Label fx:id="new_pass_label" layoutX="480.0" layoutY="141.0" prefHeight="18.0" prefWidth="92.0" />
             <Label fx:id="cf_pass_label" layoutX="498.0" layoutY="188.0" prefHeight="18.0" prefWidth="80.0" />
-            <Button fx:id="change_bt" layoutX="203.0" layoutY="249.0" mnemonicParsing="false" onAction="#ChangeButtonOnAction" text="Thay đổi" />
-            <Button fx:id="cancel_bt" layoutX="378.0" layoutY="249.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" text="Cancel" />
+            <Button layoutX="203.0" layoutY="249.0" mnemonicParsing="false" onAction="#ChangeButtonOnAction" text="Thay đổi" />
+            <Button layoutX="378.0" layoutY="249.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" text="Cancel" />
             <Label fx:id="mess_label" layoutX="200.0" layoutY="225.0" prefHeight="18.0" prefWidth="226.0" />
          </children>
       </AnchorPane>
@@ -39,13 +40,13 @@
             <Point3D />
          </rotationAxis>
          <children>
-            <Button fx:id="logoutbutton" layoutX="1120.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logoutbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="Logout" />
-            <Button fx:id="my_work_bt" layoutX="160.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#myworkbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="My work" />
-            <Button fx:id="all_pj_bt" layoutX="80.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#allpjbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="All project" />
-            <Button fx:id="home_bt" layoutY="-1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Home" />
+            <Button layoutX="1120.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logoutbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="Logout" />
+            <Button layoutX="160.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#myworkbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="My work" />
+            <Button layoutX="80.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#allpjbuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="All project" />
+            <Button layoutY="-1.0" mnemonicParsing="false" onAction="#homebuttonOnAction" prefHeight="26.0" prefWidth="80.0" text="Home" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="My_Work_AnchorPane" layoutY="25.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1200.0" style="-fx-background-color: orange;">
+      <AnchorPane fx:id="My_Work_AnchorPane" layoutY="25.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1200.0" style="-fx-background-color: orange;" visible="false">
          <children>
             <TableView fx:id="user_table" editable="true" onTouchReleased="#deleteRow" prefHeight="635.0" prefWidth="862.0">
               <columns>
@@ -61,7 +62,7 @@
                   <TableColumn fx:id="due_date_col_user_table" prefWidth="96.79998779296875" text="Due Date" />
               </columns>
                <contextMenu>
-                  <ContextMenu fx:id="delete">
+                  <ContextMenu>
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#deleteRow" text="Delete" />
                     </items>
@@ -73,8 +74,8 @@
             <Label layoutX="898.0" layoutY="182.0" text="Email" />
             <TextField fx:id="name_text" layoutX="984.0" layoutY="88.0" prefHeight="26.0" prefWidth="190.0" promptText="Full Name" />
             <TextField fx:id="email_text" layoutX="983.0" layoutY="178.0" prefHeight="26.0" prefWidth="190.0" promptText="Email" />
-            <Button fx:id="change_acc_bt" layoutX="901.0" layoutY="243.0" mnemonicParsing="false" onAction="#changeAccButtonOnAction" text="Thay đổi thông tin" />
-            <Button fx:id="change_pass_bt" layoutX="1050.0" layoutY="243.0" mnemonicParsing="false" onAction="#changePassButtonOnAction" text="Thay đổi mật khẩu" />
+            <Button layoutX="901.0" layoutY="243.0" mnemonicParsing="false" onAction="#changeAccButtonOnAction" text="Thay đổi thông tin" />
+            <Button layoutX="1050.0" layoutY="243.0" mnemonicParsing="false" onAction="#changePassButtonOnAction" text="Thay đổi mật khẩu" />
             <TextField fx:id="user" editable="false" layoutX="982.0" layoutY="128.0" prefHeight="26.0" prefWidth="190.0" promptText="Username" />
             <Label fx:id="done_label" layoutX="937.0" layoutY="219.0" prefHeight="18.0" prefWidth="214.0" textFill="#27d71a" />
          </children>
@@ -91,10 +92,9 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="dev_text" layoutX="929.0" layoutY="122.0" prefHeight="26.0" prefWidth="226.0" promptText="Developer" />
             <Label layoutX="866.0" layoutY="373.0" text="Độ nghiêm trọng" />
             <Label layoutX="892.0" layoutY="412.0" text="Độ ưu tiên" />
-            <Button fx:id="add_new_bt" layoutX="989.0" layoutY="528.0" mnemonicParsing="false" onAction="#addnewbuttonOnAction" text="Add New" />
+            <Button layoutX="989.0" layoutY="528.0" mnemonicParsing="false" onAction="#addnewbuttonOnAction" text="Add New" />
             <TableView fx:id="bugs_table_view" layoutY="-6.0" prefHeight="635.0" prefWidth="856.0">
               <columns>
                   <TableColumn fx:id="id_col" prefWidth="99.99999696016312" text="ID" />
@@ -120,8 +120,13 @@
             <Label fx:id="id_label" layoutX="1128.0" layoutY="91.0" prefHeight="18.0" prefWidth="54.0" textFill="RED" />
             <Label layoutX="920.0" layoutY="26.0" text="Search" />
             <TextField fx:id="search" layoutX="980.0" layoutY="22.0" promptText="Search" />
+            <ComboBox fx:id="dev_box" layoutX="933.0" layoutY="122.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="635.0" prefWidth="1200.0" visible="false" />
+      <AnchorPane fx:id="home_AnchorPane" layoutY="25.0" prefHeight="635.0" prefWidth="1200.0" style="-fx-background-color: green;">
+         <children>
+            <PieChart fx:id="pie_chart" layoutX="280.0" layoutY="69.0" legendVisible="false" prefHeight="454.0" prefWidth="639.0" />
+            <Label fx:id="percent_label" layoutX="800.0" layoutY="77.0" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
