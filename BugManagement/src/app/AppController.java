@@ -40,6 +40,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -62,6 +63,8 @@ public class AppController implements Initializable {
     @FXML private LineChart<String, Number> line_chart;  
   
     private final ObservableList<Bugs> bugsObservableList = FXCollections.observableArrayList();
+    @FXML
+    private ImageView image;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {    
@@ -72,12 +75,27 @@ public class AppController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        do_nghiem_trong_box.getItems().addAll("Nghiêm trọng","Cao","Trung bình","Thấp");       
+        do_uu_tien_box.getItems().addAll("High","Medium","Low");                   
+        phan_loai_box.getItems().addAll("Bug","Deffect","Error","Failure");    
+        
+        try {
+            Statement statement = ((new Database()).getConnection()).createStatement();
+            ResultSet queryResult = statement.executeQuery("SELECT * FROM account");
+            while(queryResult.next()) {
+                String dev = queryResult.getString("username");
+                dev_box.getItems().add(dev);
+            }
+        }catch (SQLException e) {e.printStackTrace();}
+        
         initiatePieChart();
         search();
+        Menu_AnchorPane.setVisible(true);
         home_AnchorPane.setVisible(true);
         My_Work_AnchorPane.setVisible(false);
         All_Pj_AnchorPane.setVisible(false);
         Change_Pass_AnchorPane.setVisible(false);
+        image.setVisible(true);
     }    
     
     public void UpdateProjectBox() {
@@ -155,8 +173,10 @@ public class AppController implements Initializable {
     @FXML
     public void changePassButtonOnAction() {
         My_Work_AnchorPane.setVisible(false);
-        Menu_AnchorPane.setDisable(true);
+        Menu_AnchorPane.setVisible(false);
         Change_Pass_AnchorPane.setVisible(true);
+        All_Pj_AnchorPane.setVisible(false);
+        home_AnchorPane.setVisible(false);
     }
     
     public int num(String statusQuery) throws Exception {
@@ -199,6 +219,7 @@ public class AppController implements Initializable {
                 percent_label.setTranslateX(e.getSceneX() - percent_label.getLayoutX());
                 percent_label.setTranslateY(e.getSceneY() - percent_label.getLayoutY());
                 percent_label.setText(String.valueOf(data.getPieValue() + "%"));
+
                 //animation
                 Bounds b1 = data.getNode().getBoundsInLocal();
                 // Make sure pie wedge location is reset
@@ -213,9 +234,8 @@ public class AppController implements Initializable {
                 tt.setAutoReverse(true);
                 tt.setCycleCount(2);
                 tt.play();
-                
-            });
-        }        
+            });  
+        }     
     }
       
     public void initiateLineChart() throws SQLException {   
@@ -293,7 +313,9 @@ public class AppController implements Initializable {
     public void CancelButtonOnAction() {
         Change_Pass_AnchorPane.setVisible(false);
         My_Work_AnchorPane.setVisible(true);
-        Menu_AnchorPane.setDisable(false);
+        Menu_AnchorPane.setVisible(true);
+        All_Pj_AnchorPane.setVisible(false);
+        home_AnchorPane.setVisible(false);
     }
 
     public void search() {
@@ -343,20 +365,7 @@ public class AppController implements Initializable {
         phan_loai_col.setCellValueFactory(new PropertyValueFactory<>("phan_loai"));
         dev_col.setCellValueFactory(new PropertyValueFactory<>("dev"));
         due_date_col.setCellValueFactory(new PropertyValueFactory<>("due_date"));
-        
-        do_nghiem_trong_box.getItems().addAll("Nghiêm trọng","Cao","Trung bình","Thấp");       
-        do_uu_tien_box.getItems().addAll("High","Medium","Low");                   
-        phan_loai_box.getItems().addAll("Bug","Deffect","Error","Failure");
-        
-        Statement statement = ((new Database()).getConnection()).createStatement();
-        try {
-            ResultSet queryResult = statement.executeQuery("SELECT * FROM account");
-            while(queryResult.next()) {
-                String dev = queryResult.getString("username");
-                dev_box.getItems().add(dev);
-            }
-        }catch (SQLException e) {e.printStackTrace();}
-        
+   
         user_table.setItems(bugsObservableList);
         id_col_user_table.setCellValueFactory(new PropertyValueFactory<>("id"));
         pj_col_user_table.setCellValueFactory(new PropertyValueFactory<>("project"));
@@ -369,7 +378,8 @@ public class AppController implements Initializable {
         due_date_col_user_table.setCellValueFactory(new PropertyValueFactory<>("due_date"));
         dev_col_user_table.setCellValueFactory(new PropertyValueFactory<>("dev"));
 
-        //kết nối database với bugsObservableList    
+        //kết nối database với bugsObservableList  
+        Statement statement = ((new Database()).getConnection()).createStatement();  
         try {           
             ResultSet queryResult = statement.executeQuery("SELECT * FROM bugs");
             while(queryResult.next()) {
@@ -388,6 +398,8 @@ public class AppController implements Initializable {
         due_date_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try { 
                 statement.executeUpdate("UPDATE bugs SET due_date = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDue_date(event.getNewValue());
         });
@@ -396,6 +408,8 @@ public class AppController implements Initializable {
         id_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {               
                 statement.executeUpdate("UPDATE bugs SET ID = '"+event.getNewValue()+"' WHERE ID = '"+event.getOldValue()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}  
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setId(event.getNewValue());
         });
@@ -404,6 +418,8 @@ public class AppController implements Initializable {
         pj_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {               
                 statement.executeUpdate("UPDATE bugs SET project = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}  
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setProject(event.getNewValue());
         });
@@ -412,14 +428,18 @@ public class AppController implements Initializable {
         mo_ta_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {              
                 statement.executeUpdate("UPDATE bugs SET description = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();} 
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setMo_ta(event.getNewValue());
         });
         
-        dev_col_user_table.setCellFactory(TextFieldTableCell.forTableColumn());
+        dev_col_user_table.setCellFactory(ComboBoxTableCell.forTableColumn(dev_box.getItems()));
         dev_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {     
                 statement.executeUpdate("UPDATE bugs SET dev = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}   
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDev(event.getNewValue());
         });
@@ -430,6 +450,8 @@ public class AppController implements Initializable {
             try {       
                 statement.executeUpdate("UPDATE bugs SET status = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
                 initiatePieChart();
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();} 
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setStatus(event.getNewValue());
         });
@@ -438,6 +460,8 @@ public class AppController implements Initializable {
         nghiem_trong_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {               
                 statement.executeUpdate("UPDATE bugs SET do_nghiem_trong = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();} 
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDo_nghiem_trong(event.getNewValue());
         });
@@ -446,6 +470,8 @@ public class AppController implements Initializable {
         uu_tien_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {           
                 statement.executeUpdate("UPDATE bugs SET do_uu_tien = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDo_uu_tien(event.getNewValue());
         });
@@ -454,6 +480,8 @@ public class AppController implements Initializable {
         phan_loai_col_user_table.setOnEditCommit((TableColumn.CellEditEvent<Bugs, String> event) -> {
             try {               
                 statement.executeUpdate("UPDATE bugs SET phan_loai = '"+event.getNewValue()+"' WHERE ID = '"+event.getRowValue().getId()+"'");
+                bugsObservableList.clear();
+                initiateTable();
             } catch(SQLException e) {e.printStackTrace();}
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setPhan_loai(event.getNewValue());
         });
@@ -484,8 +512,8 @@ public class AppController implements Initializable {
             }
         } catch(SQLException e) {e.printStackTrace();}
         
-        if (!id_text.getText().equals("")) {
-            if (!id_text.getText().equals(trùng_id)) {
+        if (!id_text.getText().equals("") && !id_text.getText().equals(trùng_id)) {
+            if (dev_box.getValue() != null) {
                 if (!project_text.getText().equals("")) {  
                     if (do_nghiem_trong_box.getValue() != null) {
                         if (do_uu_tien_box.getValue() != null) {
