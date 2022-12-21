@@ -46,9 +46,7 @@ public class SignupController {
         
         //check 
         if (!name.getText().equals("")) {
-            if(Pattern.matches("\\w+\\s\\w+", name.getText()) == false) {
-                namelabel.setText("nhập lại");
-            } else namelabel.setText("");
+            namelabel.setText("");
         } else namelabel.setText("nhập");            
         
         if (!email.getText().equals("")) {
@@ -77,7 +75,7 @@ public class SignupController {
             } else cfpasslabel.setText("");
         } else cfpasslabel.setText("nhập");
         
-        if (Pattern.matches("\\w+\\s\\w+", name.getText()) == true) {
+        if (!name.getText().equals("")) {
             if (!email.getText().equals(trùng_email)) {
                 if (Pattern.matches("^[a-zA-Z][\\w_]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$", email.getText()) == true) {  
                     if (!username.getText().equals("") && !username.getText().equals(trùng_username)) {     
