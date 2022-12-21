@@ -1,0 +1,57 @@
+.button1{
+    -fx-background-color:  #464059;
+    -fx-background-radius: 30 30 30 30;
+}
+.button1:hover{
+    -fx-background-color:  #685f85;
+    -fx-background-radius: 30 30 30 30;
+}
+.button1:pressed{
+    -fx-background-color:  #464059;
+    -fx-background-radius: 30 30 30 30;
+}
+
+.chart-pie-label {
+    -fx-fill: blue;
+    -fx-font-size: 1.5em;
+}
+.button3{ 
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 0 0;
+}
+.button3:hover {
+    -fx-background-color: #e2c9f0 ;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #4b1b63;
+    -fx-border-width: 0 0 3 0;
+}
+.button3:pressed{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.button3:change {
+    -fx-background-color: #e2c9f0 ;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #4b1b63;
+    -fx-border-width: 0 0 3 0;
+}
+
+.button4{ 
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 0 0;
+}
+.button4:hover {
+    -fx-background-color: #e2c9f0 ;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #4b1b63;
+    -fx-border-width: 0 0 3 0;
+}
+.button4:pressed{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.text-field:error {
+  -fx-border-color: red ;
+}

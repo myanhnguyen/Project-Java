@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1399.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AppController">
+   <children>
+      <Label fx:id="user" prefHeight="18.0" prefWidth="106.0" visible="false" />
+      <ImageView fx:id="image" fitHeight="730.0" fitWidth="1399.0" layoutY="1.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@home.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="Menu_AnchorPane" layoutX="-38.0" layoutY="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="1440.0" style="-fx-background-color: white;">
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+         <children>
+            <Button layoutX="1397.0" layoutY="22.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logoutbuttonOnAction" prefHeight="33.0" prefWidth="42.0" styleClass="button4" stylesheets="@fxml.css" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="pj_bt" layoutX="113.0" layoutY="22.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#allpjbuttonOnAction" prefHeight="33.0" prefWidth="75.0" styleClass="button3" stylesheets="@fxml.css" text="Project">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.2651515296011259" endY="1.0" startX="0.3219696879386902" startY="0.3143939104947177">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6923872828483582" green="0.43243664503097534" blue="0.9894737005233765" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.6923872828483582" green="0.43243664503097534" blue="0.9894737005233765" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.37667005875980686">
+                           <color>
+                              <Color red="0.26023390889167786" green="0.29551658034324646" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.26023390889167786" green="0.29551658034324646" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill></Button>
+            <Button fx:id="home_bt" layoutX="38.0" layoutY="20.0" mnemonicParsing="false" onAction="#homebuttonOnAction" prefHeight="32.0" prefWidth="75.0" styleClass="button3" stylesheets="@fxml.css" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@homeicon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="my_work_bt" layoutX="188.0" layoutY="22.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#myworkbuttonOnAction" prefHeight="33.0" prefWidth="75.0" styleClass="button3" stylesheets="@fxml.css" text="My Work">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.2613636354605357" endY="0.8825757521571536" startX="0.3219696879386902" startY="0.16666661609302869">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6923872828483582" green="0.43243664503097534" blue="0.9894737005233765" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.6923872828483582" green="0.43243664503097534" blue="0.9894737005233765" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.37667005875980686">
+                           <color>
+                              <Color red="0.26023390889167786" green="0.29551658034324646" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.26023390889167786" green="0.29551658034324646" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="My_Work_AnchorPane" layoutX="-1.0" layoutY="32.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="1400.0" style="-fx-background-color: transparent;">
+         <children>
+            <TableView fx:id="user_table" editable="true" layoutX="18.0" layoutY="23.0" onTouchReleased="#deleteRow" prefHeight="659.0" prefWidth="970.0" style="-fx-background-color: transparent;">
+              <columns>
+                <TableColumn fx:id="id_col_user_table" prefWidth="76.0" style="-fx-border-color: transparent;" text="ID" />
+                <TableColumn fx:id="pj_col_user_table" prefWidth="105.60000610351562" style="-fx-border-color: transparent;" text="Project" />
+                  <TableColumn fx:id="mo_ta_col_user_table" prefWidth="207.99993896484375" sortable="false" style="-fx-border-color: transparent;" text="Mô tả" />
+                  <TableColumn fx:id="status_col_user_table" prefWidth="92.0" style="-fx-border-color: transparent;" text="Trạng Thái" />
+                  <TableColumn fx:id="phan_loai_col_user_table" prefWidth="71.199951171875" style="-fx-border-color: transparent;" text="Phân loại" />
+                  <TableColumn fx:id="nghiem_trong_col_user_table" prefWidth="120.7999267578125" style="-fx-border-color: transparent;" text="Độ nghiêm trọng " />
+                  <TableColumn fx:id="uu_tien_col_user_table" prefWidth="89.60003662109375" style="-fx-border-color: transparent;" text="Độ ưu tiên" />
+                  <TableColumn fx:id="dev_col_user_table" prefWidth="62.4000244140625" style="-fx-border-color: transparent;" text="Dev" />
+                  <TableColumn fx:id="start_date_col_user_table" prefWidth="67.20001220703125" style="-fx-border-color: transparent;" text="Start Date" />
+                  <TableColumn fx:id="due_date_col_user_table" prefWidth="81.5999755859375" style="-fx-border-color: transparent;" text="Due Date" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#deleteRow" text="Delete" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <Label layoutX="1066.0" layoutY="212.0" text="Họ và tên" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="1065.0" layoutY="248.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="1067.0" layoutY="290.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name_text" layoutX="1159.0" layoutY="206.0" prefHeight="27.0" prefWidth="201.0" promptText="Full Name" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="email_text" layoutX="1161.0" layoutY="286.0" prefHeight="27.0" prefWidth="202.0" promptText="Email" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Button layoutX="1192.0" layoutY="346.0" mnemonicParsing="false" onAction="#changeAccButtonOnAction" prefHeight="26.0" prefWidth="140.0" styleClass="button1" stylesheets="@fxml.css" text="Thay đổi thông tin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="1192.0" layoutY="401.0" mnemonicParsing="false" onAction="#changePassButtonOnAction" prefHeight="18.0" prefWidth="140.0" styleClass="button1" stylesheets="@fxml.css" text="Thay đổi mật khẩu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="username_text" layoutX="1160.0" layoutY="244.0" prefHeight="27.0" prefWidth="202.0" promptText="Username" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="All_Pj_AnchorPane" layoutY="52.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="1400.0" style="-fx-background-color: transparent;">
+         <children>
+            <Label layoutX="1067.0" layoutY="139.0" text="Project" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="1085.0" layoutY="235.0" text="Dev" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <ComboBox fx:id="do_nghiem_trong_box" layoutX="1134.0" layoutY="443.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css" />
+            <ComboBox fx:id="do_uu_tien_box" layoutX="1135.0" layoutY="482.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css" />
+            <Label layoutX="1056.0" layoutY="408.0" text="Phân loại" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <TextField fx:id="project_text" layoutX="1132.0" layoutY="134.0" prefHeight="27.0" prefWidth="201.0" promptText="Project Name" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1014.0" layoutY="447.0" text="Độ nghiêm trọng" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="1055.0" layoutY="486.0" text="Độ ưu tiên" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Button layoutX="1197.0" layoutY="603.0" mnemonicParsing="false" onAction="#addnewbuttonOnAction" styleClass="button1" stylesheets="@fxml.css" text="Add New" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <TableView fx:id="bugs_table_view" layoutX="17.0" layoutY="3.0" prefHeight="659.0" prefWidth="970.0" style="-fx-background-color: transparent;">
+              <columns>
+                  <TableColumn fx:id="id_col" prefWidth="75.99996662139893" style="-fx-border-color: transparent;" text="ID" />
+                <TableColumn fx:id="project_col" prefWidth="104.80001831054688" style="-fx-border-color: transparent;" text="Project " />
+                <TableColumn fx:id="mo_ta_col" prefWidth="209.59999084472656" sortType="DESCENDING" sortable="false" style="-fx-border-color: transparent;" text="Mô tả" />
+                  <TableColumn fx:id="status_col" prefWidth="89.60003662109375" style="-fx-border-color: transparent;" text="Trạng thái" />
+                  <TableColumn fx:id="phan_loai_col" prefWidth="72.79998779296875" style="-fx-border-color: transparent;" text="Phân loại" />
+                  <TableColumn fx:id="do_nghiem_trong_col" prefWidth="119.199951171875" style="-fx-border-color: transparent;" text="Độ nghiêm trọng" />
+                  <TableColumn fx:id="do_uu_tien_col" prefWidth="89.60003662109375" style="-fx-border-color: transparent;" text="Độ ưu tiên" />
+                  <TableColumn fx:id="dev_col" prefWidth="62.4000244140625" style="-fx-border-color: transparent;" text="Dev" />
+                  <TableColumn fx:id="start_date_col" prefWidth="68.79998779296875" style="-fx-border-color: transparent;" text="Start date" />
+                  <TableColumn fx:id="due_date_col" prefWidth="75.19998779296873" style="-fx-border-color: transparent;" text="Due date" />
+              </columns>
+            </TableView>
+            <TextArea fx:id="mo_ta_text" layoutX="1134.0" layoutY="271.0" prefHeight="117.0" prefWidth="201.0" promptText="Description">
+               <font>
+                  <Font size="13.0" />
+               </font></TextArea>
+            <Label layoutX="1070.0" layoutY="271.0" text="Mô tả" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <ComboBox fx:id="phan_loai_box" layoutX="1135.0" layoutY="403.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css" />
+            <Label layoutX="1060.0" layoutY="526.0" text="Due Date" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="13.0" />
+               </font></Label>
+            <DatePicker fx:id="due_date_date" layoutX="1135.0" layoutY="521.0" prefHeight="27.0" prefWidth="201.0" styleClass="text-field" stylesheets="@fxml.css" />
+            <Label fx:id="message_label" layoutX="1140.0" layoutY="576.0" prefHeight="18.0" prefWidth="190.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="1089.0" layoutY="188.0" text="ID" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <TextField fx:id="id_text" layoutX="1132.0" layoutY="191.0" prefHeight="27.0" prefWidth="201.0" promptText="ID " style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font></TextField>
+            <Label fx:id="id_label" layoutX="1059.0" layoutY="126.0" prefHeight="18.0" prefWidth="66.0" textFill="RED">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <TextField fx:id="search" layoutX="1132.0" layoutY="44.0" prefHeight="27.0" prefWidth="201.0" promptText="Search" style="-fx-background-radius: 30 30 30 30;">
+               <font>
+                  <Font size="13.0" />
+               </font></TextField>
+            <ComboBox fx:id="dev_box" layoutX="1132.0" layoutY="230.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css" />
+            <ImageView fitHeight="24.0" fitWidth="43.0" layoutX="1097.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@search.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="home_AnchorPane" layoutX="-1.0" layoutY="39.0" prefHeight="692.0" prefWidth="1400.0" style="-fx-background-color: transparent;" visible="false">
+         <children>
+            <PieChart fx:id="pie_chart" clockwise="false" layoutX="79.0" layoutY="58.0" legendVisible="false" prefHeight="467.0" prefWidth="572.0" styleClass="chart-pie-label" stylesheets="@fxml.css" />
+            <Label fx:id="percent_label" layoutX="221.0" layoutY="40.0" prefHeight="35.0" prefWidth="54.0" textFill="#785cdf">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <LineChart fx:id="line_chart" animated="false" layoutX="707.0" layoutY="118.0" legendVisible="false" prefHeight="504.0" prefWidth="645.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" tickLabelFill="WHITE">
+                     <tickLabelFont>
+                        <Font name="System Bold" size="16.0" />
+                     </tickLabelFont></CategoryAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis minorTickCount="1" minorTickVisible="false" side="LEFT" tickLabelFill="#fcfcfc" tickUnit="0.0">
+                     <tickLabelFont>
+                        <Font name="System Bold" size="16.0" />
+                     </tickLabelFont></NumberAxis>
+              </yAxis>
+            </LineChart>
+            <ComboBox fx:id="project_box" layoutX="904.0" layoutY="61.0" onAction="#ProjectBoxOnAction" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: white; -fx-background-radius: 30 30 30 30;" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="Change_Pass_AnchorPane" prefHeight="730.0" prefWidth="1400.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <ImageView fitHeight="362.0" fitWidth="619.0" layoutX="391.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="518.0" layoutY="295.0" text="Mật khẩu cũ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="520.0" layoutY="340.0" text="Mật khẩu mới" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="518.0" layoutY="385.0" text="Nhập lại mật khẩu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="old_pass_text" layoutX="655.0" layoutY="291.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="new_pass_text" layoutX="655.0" layoutY="336.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="cf_pass_text" layoutX="655.0" layoutY="381.0" prefHeight="27.0" prefWidth="201.0" style="-fx-background-radius: 30 30 30 30; -fx-border-radius: 30 30 30 30;" styleClass="text-field" stylesheets="@fxml.css">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </PasswordField>
+            <Label layoutX="616.0" layoutY="222.0" prefHeight="35.0" prefWidth="178.0" text="Thay đổi mật khẩu" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="578.0" layoutY="487.0" mnemonicParsing="false" onAction="#ChangeButtonOnAction" prefHeight="22.0" prefWidth="75.0" styleClass="button1" stylesheets="@fxml.css" text="Thay đổi" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="744.0" layoutY="487.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="22.0" prefWidth="75.0" styleClass="button1" stylesheets="@fxml.css" text="Hủy" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="563.0" layoutY="420.0" prefHeight="52.0" prefWidth="274.0" text="Mật khẩu phải có ít nhất 8 ký tự bao gồm: chữ hoa, chữ thường, ký tự đặc biệt và số" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
