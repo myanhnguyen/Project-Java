@@ -81,7 +81,7 @@ public class LoginController implements Initializable{
                             appcontroller.set(username);
                                     
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            stage.setTitle("App");
+                            stage.setTitle("Bug Tracker");
                             stage.setScene(new Scene(root));
                             stage.centerOnScreen();
                             stage.show();
