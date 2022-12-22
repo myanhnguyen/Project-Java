@@ -71,7 +71,19 @@ public class AppController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
-        initiateUserTable();
+        //user tableview setup
+        user_table.setItems(bugsObservableList);
+        id_col_user_table.setCellValueFactory(new PropertyValueFactory<>("id"));
+        pj_col_user_table.setCellValueFactory(new PropertyValueFactory<>("project"));
+        mo_ta_col_user_table.setCellValueFactory(new PropertyValueFactory<>("mo_ta"));
+        status_col_user_table.setCellValueFactory(new PropertyValueFactory<>("status"));
+        nghiem_trong_col_user_table.setCellValueFactory(new PropertyValueFactory<>("do_nghiem_trong"));
+        uu_tien_col_user_table.setCellValueFactory(new PropertyValueFactory<>("do_uu_tien"));
+        start_date_col_user_table.setCellValueFactory(new PropertyValueFactory<>("start_date"));
+        phan_loai_col_user_table.setCellValueFactory(new PropertyValueFactory<>("phan_loai"));
+        due_date_col_user_table.setCellValueFactory(new PropertyValueFactory<>("due_date"));
+        dev_col_user_table.setCellValueFactory(new PropertyValueFactory<>("dev"));
+        
         try {
             UpdateProjectBox();
             initiateTable();
@@ -91,6 +103,19 @@ public class AppController implements Initializable {
                 dev_box.getItems().add(dev);
             }
         }catch (SQLException e) {e.printStackTrace();}
+        
+        // user tableview check 
+        FilteredList<Bugs> filterData = new FilteredList<>(bugsObservableList, b -> true);
+        user.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterData.setPredicate(bugs -> {							
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(bugs.getDev().toLowerCase().contains(lowerCaseFilter) ) {return true;}
+                return bugs.getReporter().toLowerCase().contains(lowerCaseFilter);
+            });	
+        });		           
+        SortedList<Bugs> sortData = new SortedList<>(filterData);		
+        sortData.comparatorProperty().bind(user_table.comparatorProperty());	
+        user_table.setItems(sortData);
         
         initiatePieChart();
         search();
@@ -373,34 +398,7 @@ public class AppController implements Initializable {
         });		 
         SortedList<Bugs> sortedData = new SortedList<>(filteredData);		
         sortedData.comparatorProperty().bind(bugs_table_view.comparatorProperty());	
-        bugs_table_view.setItems(sortedData); 
-            
-        // user table
-        FilteredList<Bugs> filterData = new FilteredList<>(bugsObservableList, b -> true);
-        user.textProperty().addListener((observable, oldValue, newValue) -> {
-            filterData.setPredicate(bugs -> {							
-                String lowerCaseFilter = newValue.toLowerCase();
-                if(bugs.getDev().toLowerCase().contains(lowerCaseFilter) ) {return true;}
-                return bugs.getReporter().toLowerCase().contains(lowerCaseFilter);
-            });	
-        });		           
-        SortedList<Bugs> sortData = new SortedList<>(filterData);		
-        sortData.comparatorProperty().bind(user_table.comparatorProperty());	
-        user_table.setItems(sortData);
-    }
-    
-    public void initiateUserTable() {
-        user_table.setItems(bugsObservableList);
-        id_col_user_table.setCellValueFactory(new PropertyValueFactory<>("id"));
-        pj_col_user_table.setCellValueFactory(new PropertyValueFactory<>("project"));
-        mo_ta_col_user_table.setCellValueFactory(new PropertyValueFactory<>("mo_ta"));
-        status_col_user_table.setCellValueFactory(new PropertyValueFactory<>("status"));
-        nghiem_trong_col_user_table.setCellValueFactory(new PropertyValueFactory<>("do_nghiem_trong"));
-        uu_tien_col_user_table.setCellValueFactory(new PropertyValueFactory<>("do_uu_tien"));
-        start_date_col_user_table.setCellValueFactory(new PropertyValueFactory<>("start_date"));
-        phan_loai_col_user_table.setCellValueFactory(new PropertyValueFactory<>("phan_loai"));
-        due_date_col_user_table.setCellValueFactory(new PropertyValueFactory<>("due_date"));
-        dev_col_user_table.setCellValueFactory(new PropertyValueFactory<>("dev"));
+        bugs_table_view.setItems(sortedData);      
     }
     
     public void initiateTable() throws SQLException {
@@ -461,7 +459,7 @@ public class AppController implements Initializable {
                 bugsObservableList.clear();
                 initiateTable();     
                 search();
-            } catch(SQLException e) {e.printStackTrace();}
+            } catch(SQLException e) {e.printStackTrace();}search();
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setProject(event.getNewValue());
         });
         
